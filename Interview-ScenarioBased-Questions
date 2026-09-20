@@ -1,0 +1,46 @@
+This section will cover the scenario related questions that are asked in the DevOps interview.
+
+Scenario :-
+
+You are a DevOps engineer configuring a Kubernetes Deployment for a web application. The deployment must support graceful shutdown so that in-flight requests can complete before pods are 
+terminated during rolling updates or scaling events.
+
+Current State
+You have a single Kubernetes manifest file:
+
+deployment.yaml — A basic Deployment for the web application that currently lacks graceful shutdown configuration.
+Requirements
+Graceful Shutdown
+
+Configure the Deployment's pod spec to allow sufficient time for in-flight requests to complete before the pod is forcefully terminated:
+Set terminationGracePeriodSeconds to at least 30 seconds at the pod spec level (i.e., under spec.template.spec).
+
+This ensures that when Kubernetes sends a SIGTERM to the container, the pod is given enough time to drain connections and shut down cleanly.
+
+Constraints
+The Deployment name must remain web-app
+The application listens on port 8080.
+Use the image codility/web-app:1.0 (or any qualified image with a specific version tag).
+
+Answer :-
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      terminationGracePeriodSeconds: 30  ==> Added the " terminationGracePeriodSeconds" to set the graceful termination.
+      containers:
+        - name: web-app
+          image: codility/web-app:1.0    ==> Image added for the container
+          ports:
+            - containerPort: 8080
