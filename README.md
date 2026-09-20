@@ -50,22 +50,6 @@ Scenario-Based Interview Questions
 DevOps / SRE Interview Ready 🚀
 ```
 
-### Sample Interview Preparation
-
-The later sections will gradually move towards **scenario-based questions**, such as:
-
-> A Pod is stuck in `Pending`. How would you troubleshoot it?
-
-> The application is running, but users cannot access it. What would you check?
-
-> A deployment was successful, but the new version isn't receiving traffic. How would you investigate?
-
-> One Kubernetes node goes down. What happens to the workloads?
-
-The objective is not just to know **what a Kubernetes component is**, but to understand **why it exists, how it works, and how you would troubleshoot it in a production environment**.
-
----
-
 ## ☁️ Cloud & Production Focus
 
 Where relevant, the concepts will also be connected to real-world cloud environments, particularly **AWS EKS**.
